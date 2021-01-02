@@ -1,3 +1,13 @@
 .container {
-    background-color: red;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 410px;
+    margin: 0 auto;
+
+    & .progressBar {
+        flex: 3 0 auto;
+    }
 }
