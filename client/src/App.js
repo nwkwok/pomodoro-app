@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react'
 import style from './App.module.scss'
 import { buildStyles, CircularProgressbar } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css'
+import logo from './assets/icon-settings.svg'
 
 function App() {
   const [time, setTime] = useState(15)
@@ -50,14 +51,21 @@ function App() {
   return (
     <div className={style.container}>
       <h1>pomodoro</h1>
-      <p>pomodoro   short break   long break</p>
+      <div className={style.optionsContainer}>
+        <ul className={style.optionsList}>
+          <li>pomodoro</li>
+          <li>short break</li>
+          <li>long break</li>
+        </ul>
+      </div>
+      
       <CircularProgressbar
         className={style.progressBar}
         value={time}
         text={`${time}`}
         strokeWidth={2}
         />
-      <p>Cog Image</p>
+      <img src={logo} class={style.settings} alt="setting icon"/>
       <button onClick={handleChange}>Change #</button>
     </div>
   )
