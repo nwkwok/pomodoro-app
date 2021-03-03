@@ -39,13 +39,11 @@ function App() {
   // Work on React Circular Progress Bar functionality
   // Figure out how to progress bar every second
 
-
-
   const handleChange = () => {
     setTime(prevTimer => {
       console.log(prevTimer);
       return prevTimer + 1
-    })
+    });
 
   }
   return (
