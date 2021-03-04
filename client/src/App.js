@@ -1,4 +1,5 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useRef} from 'react'
+import Modal from './Modal'
 import style from './App.module.scss'
 import { buildStyles, CircularProgressbar } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css'
@@ -7,6 +8,7 @@ import logo from './assets/icon-settings.svg'
 function App() {
   const [time, setTime] = useState(15)
   const [second, setSecond] = useState(0)
+  const modal = useRef(null)
 
   
 //Todo #1: 
@@ -47,25 +49,30 @@ function App() {
 
   }
   return (
-    <div className={style.container}>
-      <h1>pomodoro</h1>
-      <div className={style.optionsContainer}>
-        <ul className={style.optionsList}>
-          <li>pomodoro</li>
-          <li>short break</li>
-          <li>long break</li>
-        </ul>
+    <>
+      <div className={style.container}>
+        <h1>pomodoro</h1>
+        <div className={style.optionsContainer}>
+          <ul className={style.optionsList}>
+            <li>pomodoro</li>
+            <li>short break</li>
+            <li>long break</li>
+          </ul>
+        </div>
+        
+        <CircularProgressbar
+          className={style.progressBar}
+          value={time}
+          text={`${time}`}
+          strokeWidth={2}
+          />
+        <img onclick={()=>modal.current.open()} src={logo} class={style.settings} alt="setting icon"/>
+        <button onClick={handleChange}>Change #</button>
       </div>
-      
-      <CircularProgressbar
-        className={style.progressBar}
-        value={time}
-        text={`${time}`}
-        strokeWidth={2}
-        />
-      <img src={logo} class={style.settings} alt="setting icon"/>
-      <button onClick={handleChange}>Change #</button>
-    </div>
+      <Modal ref={modal}>
+        Hello World
+      </Modal>
+    </>
   )
 }
 
